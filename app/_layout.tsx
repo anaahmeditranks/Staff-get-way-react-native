@@ -1,29 +1,61 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
+import View from "@/components/shared/View";
+import "@/i18n";
+import { DarkMode, LightTheme } from "@/theme";
+import ThemeProvider, { useThemeContext } from "@/theme/ThemeProvider";
+import { toastConfig } from "@/toastConfig";
+import { Stack } from "expo-router";
+import { IconButton, PaperProvider } from "react-native-paper";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+  return (
+    <ThemeProvider>
+      <ThemedLayout />
+    </ThemeProvider>
+  );
+}
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
+function ThemedLayout() {
+  const insets = useSafeAreaInsets();
+  const { isDarkMode, toggleTheme } = useThemeContext();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <PaperProvider theme={isDarkMode ? DarkMode : LightTheme}>
+      <View
+        style={{
+          flex: 1,
+          // paddingTop: insets.top,
+          position: "relative",
+          backgroundColor: "transparent",
+        }}
+      >
+        <View
+          style={{
+            position: "absolute",
+            top: 30,
+            right: 16,
+            zIndex: 1,
+            backgroundColor: "transparent",
+          }}
+        >
+          <IconButton
+            icon={isDarkMode ? "white-balance-sunny" : "weather-night"}
+            size={20}
+            onPress={toggleTheme}
+            mode="contained-tonal"
+            accessibilityLabel="Toggle Theme"
+          />
+        </View>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="boarding" />
+          <Stack.Screen name="forget-password" />
+          <Stack.Screen name="otp-verification" />
+          <Stack.Screen name="new-password" />
+        </Stack>
+        <Toast config={toastConfig} position="bottom" />
+      </View>
+    </PaperProvider>
   );
 }

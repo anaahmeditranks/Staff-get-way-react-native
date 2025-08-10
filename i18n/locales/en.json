@@ -1,0 +1,56 @@
+{
+  "boarding": {
+    "onboarding1": {
+      "title": "Welcome to StaffGateway!",
+      "description": "Your one-stop solution for a seamless and efficient work experience. Navigate through an intuitive interface designed to enhance your daily tasks and overall productivity."
+    },
+    "onboarding2": {
+      "title": "Comprehensive Self-Services",
+      "description": "Empower Yourself with Comprehensive Self-Services. Access a wide range of self-service tools that simplify your work life. Manage leaves, attendance, payslips, requests, approvals, permissions, and more effortlessly right from your mobile device."
+    },
+    "onboarding3": {
+      "title": "Enhance Your Enterprise Operations",
+      "description": "Take advantage of cutting-edge features that go beyond conventional boundaries. StaffGateway is here to revolutionize your user experience and transform how you handle business operations."
+    },
+    "getStarted": "Get Started"
+  },
+  "login": {
+    "proceed_with_your": "Proceed with your",
+    "login": "Login",
+    "user_name": "User Name",
+    "password": "Password",
+    "remember_me": "Remember Me",
+    "use_face_id": "Use Face ID"
+  },
+  "forget_password": {
+    "title": "Forget Password?",
+    "desc": "Don’t worry ! It happens. Please enter your user name,we will send the OTP to your email address",
+    "user_name": "User Name",
+    "user_name_placeholder": "Enter your user name",
+    "national_id": "National ID",
+    "national_id_placeholder": "Enter your national id",
+    "continue": "Continue"
+  },
+  "otp_verification": {
+    "title": "OTP Verification",
+    "timer": "Sec",
+    "not_receive_code": "Don’t receive code ?",
+    "resend": "Re-send",
+    "submit": "Submit"
+  },
+  "new_password": {
+    "title": "Create a New Password",
+    "new_password": "New Password",
+    "new_password_placeholder": "Enter your new password",
+    "confirm_password": "Confirm Password",
+    "confirm_password_placeholder": "Confirm your new password",
+    "update": "Update Password"
+  },
+    "reset_confirmation": {
+    "congratulations": "Congratulations",
+    "desc": "Password reset successful you can be directed to the login screen now.",
+    "thank_you": "Thank you for your submission.",
+    "sign_in": "Sign In",
+    "success_toast": "Password reset successful!"
+  }
+}
