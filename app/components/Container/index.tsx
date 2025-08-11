@@ -1,5 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet } from "react-native";
+import { moderateScale } from "react-native-size-matters";
 import KeyboardAvoidingView from "../KeyboardAvoidingView";
 
 export default function Container({ children }: { children: React.ReactNode }) {
@@ -8,7 +9,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
       display: "flex",
       flexDirection: "column",
       height: "100%",
-      paddingHorizontal: 12,
+      paddingHorizontal: moderateScale(16),
     },
   });
 

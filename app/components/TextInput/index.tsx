@@ -1,25 +1,29 @@
 import { FunctionComponent, ReactNode } from "react";
-import { StyleSheet } from "react-native";
 import {
-  TextInput as InputPaper,
   Text,
+  TextInput,
   TextInputProps,
 } from "react-native-paper";
+import { ScaledSheet } from "react-native-size-matters";
 
-export default function TextInput({
+export default function AppTextInput({
   label,
   ...Props
 }: { label: string } & TextInputProps): ReactNode & {
   Icon?: FunctionComponent<TextInputProps>;
 } {
-  const styles = StyleSheet.create({
+  const styles = ScaledSheet.create({
     label: {
-      fontSize: 13,
+      fontSize: "16@msr",
       color: "#096484",
       paddingInline: 0,
       paddingHorizontal: 0,
     },
-    inputContent: { paddingInlineStart: 0, fontSize: 16 },
+    inputContent: {
+      paddingInlineStart: 0,
+      fontSize: "18@msr",
+      marginTop: "8@msr",
+    },
     input: {
       backgroundColor: "transparent",
       paddingHorizontal: 0,
@@ -27,7 +31,7 @@ export default function TextInput({
   });
 
   return (
-    <InputPaper
+    <TextInput
       style={[styles.input, Props.style]}
       contentStyle={[styles.inputContent, Props.contentStyle]}
       label={<Text style={styles.label}>{label}</Text>}
@@ -36,4 +40,4 @@ export default function TextInput({
   );
 }
 
-TextInput.Icon = InputPaper.Icon;
+AppTextInput.Icon = TextInput.Icon;

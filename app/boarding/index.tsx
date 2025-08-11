@@ -1,5 +1,5 @@
-import Button from "@/components/Button";
-import View from "@/components/shared/View";
+import AppButton from "@/app/components/Button";
+import View from "@/app/components/shared/View";
 import { useRouter } from "expo-router";
 import { TFunction } from "i18next";
 import React, { useRef } from "react";
@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Animated, Image, ImageSourcePropType } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { Text } from "react-native-paper";
+import { moderateScale, scale, verticalScale } from "react-native-size-matters";
 import styles from "./styles";
 
 type Slide = {
@@ -45,13 +46,13 @@ export default function Boarding() {
   // animation
   const animatedDots = useRef(
     slidePaginationLen.map(
-      (_, index) => new Animated.Value(index === 0 ? 30 : 6)
+      (_, index) => new Animated.Value(index === 0 ? scale(30) : scale(6))
     )
   ).current;
   const animatedDot = (activeIndex: number) => {
     animatedDots.forEach((animWidth, index) => {
       Animated.timing(animWidth, {
-        toValue: activeIndex === index ? 30 : 6,
+        toValue: activeIndex === index ? scale(30) : scale(6),
         duration: 300,
         useNativeDriver: false,
       }).start();
@@ -60,16 +61,29 @@ export default function Boarding() {
 
   const renderItem = (item: Slide, index: number) => {
     const { title, description, image, key } = item;
+    const isSecondSlide = index === 1;
     const orderViews = [
-      <View key="orderViews1" style={styles.textContainer}>
+      <View
+        key="orderViews1"
+        style={[
+          styles.textContainer,
+          { paddingTop: isSecondSlide ? moderateScale(40) : moderateScale(90) },
+        ]}
+      >
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
       </View>,
-      <View key="orderViews2" style={styles.coverImg}>
+      <View
+        key="orderViews2"
+        style={[
+          styles.coverImg,
+          { height: isSecondSlide ? verticalScale(430) : verticalScale(450) },
+        ]}
+      >
         <Image source={image} style={styles.img} />
       </View>,
     ];
-    const order = index === 1 ? [1, 0] : [0, 1];
+    const order = isSecondSlide ? [1, 0] : [0, 1];
 
     return (
       <View style={styles.container} key={key}>
@@ -88,9 +102,9 @@ export default function Boarding() {
       renderPagination={(activeIndex) => (
         <View style={styles.paginationContainer}>
           {activeIndex === 2 ? (
-            <Button mode="contained" onPress={() => navigate("/login")}>
+            <AppButton mode="contained" onPress={() => navigate("/login")}>
               {t("boarding.getStarted")}
-            </Button>
+            </AppButton>
           ) : (
             <View style={styles.containerDots}>
               {slides.map((_, index) => (
@@ -99,7 +113,7 @@ export default function Boarding() {
                   style={[
                     styles.inactiveDot,
                     {
-                      width: animatedDots[index] ?? 6,
+                      width: animatedDots[index] ?? scale(6),
                       backgroundColor:
                         activeIndex === index ? "#30A9E0" : "#B6B6B6",
                     },

@@ -1,6 +1,6 @@
-import Button from "@/components/Button";
-import Container from "@/components/Container";
-import View from "@/components/shared/View";
+import AppButton from "@/app/components/Button";
+import Container from "@/app/components/Container";
+import View from "@/app/components/shared/View";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -38,11 +38,11 @@ export default function OtpVerification() {
         <Text style={styles.time}>{t("timer")}</Text>
         <View style={styles.sendCode}>
           <Text>{t("not_receive_code")}</Text>
-          <Button mode="text" textColor="#0083B0">
+          <AppButton mode="text" textColor="#0083B0">
             {t("resend")}
-          </Button>
+          </AppButton>
         </View>
-        <Button
+        <AppButton
           mode="contained"
           style={[
             styles.button,
@@ -55,7 +55,7 @@ export default function OtpVerification() {
           disabled={disabled}
         >
           {t("submit")}
-        </Button>
+        </AppButton>
       </View>
     </Container>
   );

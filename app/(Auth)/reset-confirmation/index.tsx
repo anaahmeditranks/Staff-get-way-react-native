@@ -1,5 +1,5 @@
-import Button from "@/components/Button";
-import View from "@/components/shared/View";
+import AppButton from "@/app/components/Button";
+import View from "@/app/components/shared/View";
 import { useTranslation } from "react-i18next";
 import { Image } from "react-native";
 import { Text } from "react-native-paper";
@@ -29,9 +29,9 @@ export default function ResetConfirmation() {
           </View>
           <Text style={styles.thx}>{t("thank_you")}</Text>
         </View>
-        <Button mode="contained" style={styles.button} onPress={handleSignIn}>
+        <AppButton mode="contained" style={styles.button} onPress={handleSignIn}>
           {t("sign_in")}
-        </Button>
+        </AppButton>
       </View>
     </View>
   );

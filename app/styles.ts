@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
+import { ScaledSheet } from "react-native-size-matters";
 
-export default StyleSheet.create({
+export default ScaledSheet.create({
   card: {
     display: "flex",
     alignItems: "center",
@@ -11,12 +11,12 @@ export default StyleSheet.create({
     justifyContent: "center",
   },
   img: {
-    width: 280,
-    height: 280,
+    width: "280@s",
+    height: "280@vs",
   },
   dots: {
     justifyContent: "center",
-    width: 113,
-    marginBottom: 60,
+    width: "113@s",
+    marginBottom: "90@msr",
   },
 });

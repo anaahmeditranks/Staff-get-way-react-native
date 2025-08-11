@@ -1,4 +1,4 @@
-import View from "@/components/shared/View";
+import View from "@/app/components/shared/View";
 import { StyleSheet } from "react-native";
 import { Icon, IconButton, Text } from "react-native-paper";
 import { ToastConfig } from "react-native-toast-message";

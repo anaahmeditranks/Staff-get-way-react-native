@@ -1,4 +1,4 @@
-import View from "@/components/shared/View";
+import View from "@/app/components/shared/View";
 import "@/i18n";
 import { DarkMode, LightTheme } from "@/theme";
 import ThemeProvider, { useThemeContext } from "@/theme/ThemeProvider";

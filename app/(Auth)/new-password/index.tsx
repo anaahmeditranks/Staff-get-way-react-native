@@ -1,7 +1,7 @@
-import Button from "@/components/Button";
-import Container from "@/components/Container";
-import View from "@/components/shared/View";
-import TextInput from "@/components/TextInput";
+import AppButton from "@/app/components/Button";
+import Container from "@/app/components/Container";
+import View from "@/app/components/shared/View";
+import AppTextInput from "@/app/components/TextInput";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -30,41 +30,41 @@ export default function NewPassword() {
       </View>
       <View style={styles.formContainer}>
         <View style={styles.inputsContainer}>
-          <TextInput
+          <AppTextInput
             label={t("new_password")}
             placeholder={t("new_password_placeholder")}
             secureTextEntry={hidePass}
             onChangeText={(password) => setNewPassword(password)}
             value={newPassword}
             right={
-              <TextInput.Icon
+              <AppTextInput.Icon
                 icon={hidePass ? "eye-off" : "eye"}
                 onPress={() => setHidePass(!hidePass)}
               />
             }
           />
-          <TextInput
+          <AppTextInput
             label={t("confirm_password")}
             placeholder={t("confirm_password_placeholder")}
             secureTextEntry={hideConfirmPass}
             onChangeText={(password) => setConfirmPassword(password)}
             value={confirmPassword}
             right={
-              <TextInput.Icon
+              <AppTextInput.Icon
                 icon={hideConfirmPass ? "eye-off" : "eye"}
                 onPress={() => setHideConfirmPass(!hideConfirmPass)}
               />
             }
           />
         </View>
-        <Button
+        <AppButton
           mode="contained"
           style={[styles.button, disabled && styles.disabledButton]}
           disabled={disabled}
           onPress={() => navigate("/reset-confirmation")}
         >
           {t("update")}
-        </Button>
+        </AppButton>
       </View>
     </Container>
   );

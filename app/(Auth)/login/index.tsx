@@ -1,6 +1,6 @@
-import Button from "@/components/Button";
-import View from "@/components/shared/View";
-import TextInput from "@/components/TextInput";
+import AppButton from "@/app/components/Button";
+import View from "@/app/components/shared/View";
+import AppTextInput from "@/app/components/TextInput";
 import { changeLanguage } from "@/i18n";
 import { LinearGradient } from "expo-linear-gradient";
 import { authenticateAsync } from "expo-local-authentication";
@@ -47,20 +47,20 @@ export default function Login() {
         <Text style={styles.loginWord}>{t("login")}</Text>
       </View>
       <View style={styles.coverForm}>
-        <TextInput
+        <AppTextInput
           label={t("user_name")}
           placeholder={t("user_name")}
           onChangeText={(name) => setUsername(name)}
           value={username}
         />
-        <TextInput
+        <AppTextInput
           label={t("password")}
           placeholder={t("password")}
           secureTextEntry={hidePass}
           onChangeText={(password) => setPassword(password)}
           value={password}
           right={
-            <TextInput.Icon
+            <AppTextInput.Icon
               icon={hidePass ? "eye-off" : "eye"}
               onPress={() => setHidePass(!hidePass)}
             />
@@ -74,9 +74,12 @@ export default function Login() {
           />
           <Text style={styles.remember}>{t("remember_me")}</Text>
         </View>
-        <Button mode="contained" onPress={() => navigate("/forget-password")}>
+        <AppButton
+          mode="contained"
+          onPress={() => navigate("/forget-password")}
+        >
           {t("login")}
-        </Button>
+        </AppButton>
       </View>
       <TouchableOpacity style={styles.containerFaceId} onPress={auth}>
         <Image
@@ -85,14 +88,15 @@ export default function Login() {
         />
         <Text style={styles.faceIdText}>{t("use_face_id")}</Text>
       </TouchableOpacity>
-      <Button
+      <AppButton
         mode="text"
-        style={styles.arText}
+        style={styles.langText}
         textColor="#0083B0"
+        labelStyle={styles.langLabel}
         onPress={() => changeLanguage(isEnglishLang ? "ar" : "en")}
       >
         {isEnglishLang ? "العربية" : "English"}
-      </Button>
+      </AppButton>
     </LinearGradient>
   );
 }

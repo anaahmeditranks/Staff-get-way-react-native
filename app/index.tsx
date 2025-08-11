@@ -1,4 +1,4 @@
-import View from "@/components/shared/View";
+import View from "@/app/components/shared/View";
 import { useAppTheme } from "@/theme";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
@@ -29,7 +29,7 @@ export default function Index() {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate("/boarding");
+      navigate("/forget-password");
     }, 2000);
   }, [navigate]);
 
